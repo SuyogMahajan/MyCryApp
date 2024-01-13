@@ -28,8 +28,7 @@ class CoinItemAdapter(val context: Context):RecyclerView.Adapter<CoinItemAdapter
         fun bind(position: Int) {
 
             binding.nameTv.text = list[position].nameFull
-            binding.prizeTv.text = "$" + prices!![list[position].name]
-//            binding.varTv.text = "%"  +list[position].price_change_percentage_24h.toString()
+            binding.prizeTv.text = "$" + prices!![list[position].symbol]
             binding.totalSupplyTv.text = "$" +list[position].maxSupply
             Glide.with(context).load(list[position].iconUrl).into(binding.iconIV)
 
@@ -37,7 +36,6 @@ class CoinItemAdapter(val context: Context):RecyclerView.Adapter<CoinItemAdapter
                 onItemClick.onItemClick(list[position])
             }
         }
-
 
     }
 

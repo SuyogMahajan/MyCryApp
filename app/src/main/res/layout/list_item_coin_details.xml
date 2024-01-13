@@ -97,7 +97,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center|start"
-                android:text="3.33%"
+                android:text=""
                 android:textColor="#25E721"
                 android:textSize="14sp" />
         </LinearLayout>

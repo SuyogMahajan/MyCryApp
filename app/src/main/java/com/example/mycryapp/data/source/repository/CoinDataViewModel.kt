@@ -9,12 +9,14 @@ import com.focus.cryptotracker.data.source.repository.CoinRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+import com.example.mycryapp.utils.Result
+
 class CoinDataViewModel(application: Application) : AndroidViewModel(application) {
 
     val repository = CoinRepository(application.baseContext, Dispatchers.IO)
 
-    fun getList(): LiveData<MarketListData> {
-        val v = MutableLiveData<MarketListData>()
+    fun getList(): LiveData<Result<MarketListData>> {
+        val v = MutableLiveData<Result<MarketListData>>()
 
         viewModelScope.launch(Dispatchers.IO){
             val r = repository.getList()
@@ -24,8 +26,8 @@ class CoinDataViewModel(application: Application) : AndroidViewModel(application
         return v
     }
 
-    fun getLive(): LiveData<MarketLiveData> {
-        val v = MutableLiveData<MarketLiveData>()
+    fun getLive(): LiveData<Result<MarketLiveData>> {
+        val v = MutableLiveData<Result<MarketLiveData>>()
 
         viewModelScope.launch(Dispatchers.IO){
             val r = repository.getLive()
