@@ -33,13 +33,12 @@ class MainActivity : AppCompatActivity() {
     private var loading = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CoinDataViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-         mainHandler = Handler(Looper.getMainLooper())
-
+        mainHandler = Handler(Looper.getMainLooper())
+        viewModel = ViewModelProvider(this).get(CoinDataViewModel::class.java)
         coinItemAdapter = CoinItemAdapter(this)
 
         val onRvItemClick = object :CoinItemAdapter.onItemClickInterface{
@@ -76,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         binding.onlineStatus.visibility = View.GONE
         binding.floatingButton.visibility = View.GONE
 
-            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
         val curr = formatter.format(Date())
         binding.lastRefreshed.text = curr.toString()
         viewModel.getLive().observe(this,object:Observer<Result<MarketLiveData>>{
